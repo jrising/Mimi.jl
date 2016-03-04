@@ -1,4 +1,4 @@
-export ComponentReference
+export ComponentReference, getparams
 
 import Base.setindex!, Base.getindex
 
@@ -22,6 +22,13 @@ Set a component parameter as `reference[symbol] = value`.
 """
 function setindex!(c::ComponentReference, value, name::Symbol)
     setparameter(c.m, c.component, name, value)
+end
+
+"""
+Return the <Component>Parameters object for a reference.
+"""
+function getparams(c::ComponentReference)
+    c.m.components[c.component].Parameters
 end
 
 """
